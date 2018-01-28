@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import Book from './Book';
+import BookShelf from './BookShelf';
 
 class BookList extends Component {
   render() {
     return (
-      <ol className="books-grid">
-        <li>
-         <Book />
-        </li>
-        <li>
-          <Book />
-        </li>
-      </ol>
+      <div className="list-books-content">
+         <BookShelf title="Currently Reading"/>
+      </div>
     );
   }
 }
