@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Book from './Book';
 import SearchBar from './SearchBar';
+import BookShelf from './BookShelf';
 
 class BookSearch extends Component {
   render() {
@@ -8,14 +9,7 @@ class BookSearch extends Component {
      <div className="search-books">
        <SearchBar />
        <div className="search-books-results">
-         <ol className="books-grid">
-          <li>
-            <Book />
-          </li>
-          <li>
-            <Book />
-          </li>
-         </ol>
+         <BookShelf />
        </div>
      </div>
     );

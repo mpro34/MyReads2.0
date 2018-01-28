@@ -22,6 +22,8 @@ class SearchBar extends Component {
     e.preventDefault();
     console.log(`Search TERMS: ${this.state.term}`)
     //1. Issue API search here
+    const searchRes = BooksAPI.search(this.state.term);
+    searchRes.then(books => console.log(books));
     //2. Clear the search field after api call is issued?
   }
 
