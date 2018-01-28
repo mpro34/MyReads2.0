@@ -5,9 +5,9 @@ class BookList extends Component {
   render() {
     return (
       <div className="list-books-content">
-         <BookShelf title="Currently Reading" myBooks={this.props.myBooks}/>
-         <BookShelf title="Read" myBooks={this.props.myBooks}/>
-         <BookShelf title="Want to Read" myBooks={this.props.myBooks}/>
+         <BookShelf title="Currently Reading" books={this.props.books}/>
+         <BookShelf title="Read" books={this.props.books}/>
+         <BookShelf title="Want to Read" books={this.props.books}/>
       </div>
     );
   }

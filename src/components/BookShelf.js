@@ -6,10 +6,10 @@ class BookShelf extends Component {
     super(props);
 
     this.state = {
-      books: []
+      books: this.props.books
     }
   }
-  
+
 //Fix this!
   renderBooks() {
     this.state.books.map(book => (
@@ -20,20 +20,21 @@ class BookShelf extends Component {
   }
 
   render() {
-    console.log(this.props.myBooks);
-
+    console.log(`State Books List = ${this.state.books}`);
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.title}</h2>
+        {
+          (this.props.title !== undefined) ?
+          (<h2 className="bookshelf-title">{this.props.title}</h2>) :
+          undefined
+        }
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.renderBooks}
-            {/* <li>
-             <Book />
-            </li>
-            <li>
-              <Book />
-            </li> */}
+            {this.state.books.map((book, index) => (
+              <li key={index}>
+                {book}
+              </li>
+            ))}
           </ol>
         </div>
       </div>

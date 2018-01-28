@@ -3,16 +3,21 @@ import { Route, Link } from 'react-router-dom';
 //import * as BooksAPI from './BooksAPI'
 import './App.css'
 
+import Book from './components/Book';
 import BookList from './components/BookList';
 import BookSearch from './components/BookSearch';
 
 
 class BooksApp extends React.Component {
   state = {
-    myBooks: [] //Array of Book Objects
+    books: [
+      <Book />,
+      <Book />
+    ] //Array of Book Objects
   }
 
   render() {
+    console.log(`Start = ${this.state.books}`)
     return (
         <div className="app">
           <Route exact path='/' render={() => (
@@ -20,7 +25,7 @@ class BooksApp extends React.Component {
               <div className="list-books-title">
                 <h1>MyReads</h1>
               </div>
-              <BookList myBooks={this.state.myBooks}/>
+              <BookList books={this.state.books}/>
             </div>
           )}/>
 
