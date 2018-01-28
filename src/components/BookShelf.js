@@ -10,15 +10,6 @@ class BookShelf extends Component {
     }
   }
 
-//Fix this!
-  renderBooks() {
-    this.state.books.map(book => (
-      <li>
-        <Book />
-      </li>
-    ))
-  }
-
   render() {
     console.log(`State Books List = ${this.state.books}`);
     return (
@@ -30,9 +21,9 @@ class BookShelf extends Component {
         }
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.state.books.map((book, index) => (
+            {this.props.books.map((book, index) => (
               <li key={index}>
-                {book}
+                <Book title={book.title} authors={book.authors} imgUrl={book.imageLinks}/>
               </li>
             ))}
           </ol>
