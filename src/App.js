@@ -21,19 +21,19 @@ class BooksApp extends React.Component {
   //   ] //Array of Book Objects
   // }
 
-  addBook = (sID) => {
-    console.log(`Adding Book... ${sID}`);
-    // this.setState((state) => ({
-    //   books: state.books.push(book)
-    // }))
-  }
-
-  removeBook = (sID) => {
-    console.log(`Removing Book... ${sID}`);
-    // this.setState((state) => ({
-    //   books: state.books.filter((b) => b.id !== book.id)
-    // }))
-  }
+  // addBook = (sID) => {
+  //   console.log(`Adding Book... ${sID}`);
+  //   // this.setState((state) => ({
+  //   //   books: state.books.push(book)
+  //   // }))
+  // }
+  //
+  // removeBook = (sID) => {
+  //   console.log(`Removing Book... ${sID}`);
+  //   // this.setState((state) => ({
+  //   //   books: state.books.filter((b) => b.id !== book.id)
+  //   // }))
+  // }
 
   render() {
   //  console.log(`Start = ${JSON.stringify(this.state.books)}`)
@@ -48,20 +48,17 @@ class BooksApp extends React.Component {
               <BookShelf
                 title="Currently Reading"
                 shelfId="currentlyReading"
-                onAddBook={this.addBook}
-                onRemoveBook={this.removeBook}
+                books={this.props.books}
               />
               <BookShelf
                 title="Read"
                 shelfId="read"
-                onAddBook={this.addBook}
-                onRemoveBook={this.removeBook}
+                books={this.props.books}
               />
               <BookShelf
                 title="Want to Read"
                 shelfId="wantToRead"
-                onAddBook={this.addBook}
-                onRemoveBook={this.removeBook}
+                books={this.props.books}
               />
               <div className="open-search">
                 <Link to="/search">Add a book</Link>

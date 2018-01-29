@@ -36,20 +36,20 @@ class BookSearch extends Component {
     //2. Clear the search field after api call is issued?
   }
 
-  addBook = (sID) => {
-    console.log(`Adding Book... ${sID}`);
-    // this.setState((state) => ({
-    //   books: state.books.push(book)
-    // }))
-  }
+  // addBook = (sID) => {
+  //   console.log(`Adding Book... ${sID}`);
+  //   // this.setState((state) => ({
+  //   //   books: state.books.push(book)
+  //   // }))
+  // }
+  //
+  // removeBook = (sID) => {
+  //   console.log(`Removing Book... ${sID}`);
+  //   // this.setState((state) => ({
+  //   //   books: state.books.filter((b) => b.id !== book.id)
+  //   // }))
+  // }
 
-  removeBook = (sID) => {
-    console.log(`Removing Book... ${sID}`);
-    // this.setState((state) => ({
-    //   books: state.books.filter((b) => b.id !== book.id)
-    // }))
-  }
-  
   render() {
     return (
       <div className="search-books">
@@ -68,8 +68,6 @@ class BookSearch extends Component {
           <BookShelf
             shelfId="search"
             books={this.state.books}
-            onAddBook={this.addBook}
-            onRemoveBook={this.removeBook}
           />
         </div>
       </div>

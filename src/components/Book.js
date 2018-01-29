@@ -13,12 +13,17 @@ class Book extends Component {
 
   handleChange(e) {
     console.log(`Handling book change: ${e.target.value}`);
-    this.setState = {
+    this.setState = ({
       value: e.target.value
+    })
+    const targetBook = {
+      title: this.props.title,
+      authors: this.props.authors,
+      imgUrl: this.props.imgUrl,
+      shelfId: e.target.value
     }
-  //  console.log(this.props)
-    this.props.onAddBook(e.target.value);
-    this.props.onRemoveBook(e.target.value);
+    this.props.onAddBook(targetBook);
+    this.props.onRemoveBook(targetBook);
   }
 
   render() {
