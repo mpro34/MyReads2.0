@@ -13,6 +13,10 @@ class Book extends Component {
 
   handleChange(e) {
     console.log(`Handling book change: ${e.target.value}`);
+    this.setState = {
+      value: e.target.value
+    }
+    this.onAddBook()
   }
 
   render() {
@@ -28,12 +32,6 @@ class Book extends Component {
                 <option value="read">Read</option>
                 <option value="none">None</option>
               </select>
-              {/* <option value="none" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select> */}
           </div>
         </div>
         <div className="book-title">{this.props.title}</div>
