@@ -23,8 +23,8 @@ class SearchBar extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    console.log(`Search TERMS: ${this.state.term}`)
-    console.log(`Search Books: ${this.state.books}`)
+  //  console.log(`Search TERMS: ${this.state.term}`)
+  //  console.log(`Search Books: ${this.state.books}`)
     //1. Issue API search here
     const searchRes = BooksAPI.search(this.state.term);
     searchRes.then(books => (

@@ -11,7 +11,7 @@ class BookShelf extends Component {
   }
 
   render() {
-    console.log(`State Books List = ${JSON.stringify(this.props.books)}`);
+  //  console.log(`State Books List = ${JSON.stringify(this.props.books)}`);
     return (
       <div className="bookshelf">
         {

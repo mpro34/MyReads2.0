@@ -31,13 +31,15 @@ class BooksApp extends React.Component {
                 <h1>MyReads</h1>
               </div>
               <BookList books={this.state.books}/>
+              <div className="open-search">
+                <Link to="/search">Add a book</Link>
+              </div>
             </div>
+
           )}/>
 
           <Route path='/search' component={BookSearch} />
-          <div className="open-search">
-            <Link to="/search">Add a book</Link>
-          </div>
+
         </div>
     );
   };
