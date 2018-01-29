@@ -16,7 +16,9 @@ class Book extends Component {
     this.setState = {
       value: e.target.value
     }
-    //this.onAddBook()
+  //  console.log(this.props)
+    this.props.onAddBook(e.target.value);
+    this.props.onRemoveBook(e.target.value);
   }
 
   render() {

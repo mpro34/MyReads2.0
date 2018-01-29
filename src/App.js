@@ -9,31 +9,31 @@ import BookSearch from './components/BookSearch';
 
 
 class BooksApp extends React.Component {
-  state = {
-    books: [
-      // <Book
-      //   title='Test Book 1'
-      //   authors='Test Authors 1' imgUrl={'http://books.google.com/books/content?id=bUybAgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}/>,
-      // <Book     imgUrl={'http://books.google.com/books/content?id=bUybAgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}
-      // title={'Test Book 2'}
-      // authors={'Test Authors 2'}
-      // />
-    ] //Array of Book Objects
+  // state = {
+  //   books: [
+  //     // <Book
+  //     //   title='Test Book 1'
+  //     //   authors='Test Authors 1' imgUrl={'http://books.google.com/books/content?id=bUybAgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}/>,
+  //     // <Book     imgUrl={'http://books.google.com/books/content?id=bUybAgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}
+  //     // title={'Test Book 2'}
+  //     // authors={'Test Authors 2'}
+  //     // />
+  //   ] //Array of Book Objects
+  // }
+
+  addBook = (sID) => {
+    console.log(`Adding Book... ${sID}`);
+    // this.setState((state) => ({
+    //   books: state.books.push(book)
+    // }))
   }
 
-  // addBook = (book) => {
-  //   console.log('Adding Book...');
-  //   // this.setState((state) => ({
-  //   //   books: state.books.push(book)
-  //   // }))
-  // }
-  //
-  // removeBook = (book) => {
-  //   console.log('Removing Book...');
-  //   // this.setState((state) => ({
-  //   //   books: state.books.filter((b) => b.id !== book.id)
-  //   // }))
-  // }
+  removeBook = (sID) => {
+    console.log(`Removing Book... ${sID}`);
+    // this.setState((state) => ({
+    //   books: state.books.filter((b) => b.id !== book.id)
+    // }))
+  }
 
   render() {
   //  console.log(`Start = ${JSON.stringify(this.state.books)}`)
@@ -48,17 +48,20 @@ class BooksApp extends React.Component {
               <BookShelf
                 title="Currently Reading"
                 shelfId="currentlyReading"
-                books={this.state.books}
+                onAddBook={this.addBook}
+                onRemoveBook={this.removeBook}
               />
               <BookShelf
                 title="Read"
                 shelfId="read"
-                books={this.state.books}
+                onAddBook={this.addBook}
+                onRemoveBook={this.removeBook}
               />
               <BookShelf
                 title="Want to Read"
                 shelfId="wantToRead"
-                books={this.state.books}
+                onAddBook={this.addBook}
+                onRemoveBook={this.removeBook}
               />
               <div className="open-search">
                 <Link to="/search">Add a book</Link>

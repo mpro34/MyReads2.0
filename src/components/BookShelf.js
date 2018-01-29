@@ -10,16 +10,19 @@ class BookShelf extends Component {
     }
   }
 
-  addBook(book) {
-
-  }
-
-  removeBook(book) {
-
-  }
+  // addBook(sId) {
+  //   console.log(`Add book = ${this.state}`);
+  //   // if (this.props.shelfId === sId) {
+  //   //   console.log(`Matched ShelfId = ${this.props.shelfId}`);
+  //   // }
+  // }
+  //
+  // removeBook(sId) {
+  //   console.log('del book');
+  // }
 
   render() {
-  //  console.log(`State Books List = ${JSON.stringify(this.props.books)}`);
+//    console.log(`State Books List = ${JSON.stringify(this.props.books)}`);
     return (
       <div className="bookshelf">
         {
@@ -32,8 +35,8 @@ class BookShelf extends Component {
             {this.props.books.map((book, index) => (
               <li key={index}>
                 <Book
-                  onAddBook={this.addBook}
-                  onRemoveBook={this.removeBook}
+                  onAddBook={this.props.onAddBook}
+                  onRemoveBook={this.props.onRemoveBook}
                   title={book.title}
                   authors={book.authors}
                   imgUrl={book.imageLinks}/>
