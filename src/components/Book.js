@@ -16,7 +16,7 @@ class Book extends Component {
     this.setState = {
       value: e.target.value
     }
-    this.onAddBook()
+    //this.onAddBook()
   }
 
   render() {
@@ -30,7 +30,7 @@ class Book extends Component {
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
-                <option value="none">None</option>
+                <option defaultValue="none">None</option>
               </select>
           </div>
         </div>

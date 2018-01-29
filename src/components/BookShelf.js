@@ -6,8 +6,16 @@ class BookShelf extends Component {
     super(props);
 
     this.state = {
-      books: this.props.books
+      books: []
     }
+  }
+
+  addBook(book) {
+
+  }
+
+  removeBook(book) {
+
   }
 
   render() {
@@ -24,8 +32,8 @@ class BookShelf extends Component {
             {this.props.books.map((book, index) => (
               <li key={index}>
                 <Book
-                  onAddBook={this.props.onAddBook}
-                  onRemoveBook={this.props.onRemoveBook}
+                  onAddBook={this.addBook}
+                  onRemoveBook={this.removeBook}
                   title={book.title}
                   authors={book.authors}
                   imgUrl={book.imageLinks}/>
