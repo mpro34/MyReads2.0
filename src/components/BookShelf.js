@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Book from './Book';
 import * as BooksAPI from '../BooksAPI'
 
@@ -16,18 +17,6 @@ class BookShelf extends Component {
 
   }
 
-
-  // addBook(sId) {
-  //   console.log(`Add book = ${this.state}`);
-  //   // if (this.props.shelfId === sId) {
-  //   //   console.log(`Matched ShelfId = ${this.props.shelfId}`);
-  //   // }
-  // }
-  //
-  // removeBook(sId) {
-  //   console.log('del book');
-  // }
-
   addBook = (targetBook) => {
     console.log(`Adding Book... ${JSON.stringify(targetBook)}`);
     console.log(`req body: ${targetBook.id}, ${targetBook.shelf}`)
@@ -35,13 +24,6 @@ class BookShelf extends Component {
       .then(res => {
         console.log(res)
       });
-  //  this.props.myfunc();
-    // console.log(`Matching.... ${this.state.shelfId} TO ${targetBook.shelfId}`);
-    // if (this.state.shelfId === targetBook.shelfId) {
-    //   console.log(`Matched: ${targetBook.shelfId}`);
-    // } else {
-    //   console.log(`Not Matched: ${targetBook.shelfId}`);
-    // }
     console.log(`Original state: ${JSON.stringify(this.state.books)}`)
     this.setState({
       books: this.state.books.concat([targetBook])
@@ -51,20 +33,13 @@ class BookShelf extends Component {
     });
 
     console.log(`After Adding state: ${JSON.stringify(this.state.books)}`)
-
-  //  this.props.onGetBook([{title: 'hello'}])
   }
 
   removeBook = (targetBook) => {
     console.log(`Removing Book... ${JSON.stringify(targetBook)}`);
-
-    // this.setState((state) => ({
-    //   books: state.books.filter((b) => b.id !== book.id)
-    // }))
   }
 
   render() {
-//    console.log(`State Books List = ${JSON.stringify(this.props.books)}`);
     return (
       <div className="bookshelf">
         {

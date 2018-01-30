@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import * as BooksAPI from '../BooksAPI'
 
+import * as BooksAPI from '../BooksAPI'
 import BookShelf from './BookShelf';
 
 class BookSearch extends Component {
@@ -33,20 +33,6 @@ class BookSearch extends Component {
     //2. Clear the search field after api call is issued?
   }
 
-  // addBook = (sID) => {
-  //   console.log(`Adding Book... ${sID}`);
-  //   // this.setState((state) => ({
-  //   //   books: state.books.push(book)
-  //   // }))
-  // }
-  //
-  // removeBook = (sID) => {
-  //   console.log(`Removing Book... ${sID}`);
-  //   // this.setState((state) => ({
-  //   //   books: state.books.filter((b) => b.id !== book.id)
-  //   // }))
-  // }
-
   render() {
     return (
       <div className="search-books">
@@ -63,7 +49,6 @@ class BookSearch extends Component {
         </div>
         <div className="search-books-results">
           <BookShelf
-            shelfId="search"
             books={this.state.books}
           />
         </div>
@@ -71,13 +56,5 @@ class BookSearch extends Component {
     );
   };
 }
-// function BookSearch () {
-//   return (
-//     <div className="search-books">
-//       <SearchBar />
-//       <BookShelf shelfId="search" />
-//     </div>
-//   );
-// }
 
 export default BookSearch;
