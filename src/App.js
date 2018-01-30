@@ -9,31 +9,20 @@ import BookSearch from './components/BookSearch';
 
 
 class BooksApp extends React.Component {
-  // state = {
-  //   books: [
-  //     // <Book
-  //     //   title='Test Book 1'
-  //     //   authors='Test Authors 1' imgUrl={'http://books.google.com/books/content?id=bUybAgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}/>,
-  //     // <Book     imgUrl={'http://books.google.com/books/content?id=bUybAgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}
-  //     // title={'Test Book 2'}
-  //     // authors={'Test Authors 2'}
-  //     // />
-  //   ] //Array of Book Objects
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: []
+    }
+    this.getBook = this.getBook.bind(this);
+  }
 
-  // addBook = (sID) => {
-  //   console.log(`Adding Book... ${sID}`);
-  //   // this.setState((state) => ({
-  //   //   books: state.books.push(book)
-  //   // }))
-  // }
-  //
-  // removeBook = (sID) => {
-  //   console.log(`Removing Book... ${sID}`);
-  //   // this.setState((state) => ({
-  //   //   books: state.books.filter((b) => b.id !== book.id)
-  //   // }))
-  // }
+  getBook = (selectedBooks) => {
+    console.log(`Adding App.js... ${selectedBooks}`);
+    // this.setState((state) => ({
+    //   books: state.books.push(book)
+    // }))
+  }
 
   render() {
   //  console.log(`Start = ${JSON.stringify(this.state.books)}`)
@@ -46,19 +35,27 @@ class BooksApp extends React.Component {
               </div>
             {/*  <BookList onAddBook={this.addBook} onRemoveBook={this.removeBook} books={this.state.books}/>  */}
               <BookShelf
+                onGetBook={this.getBook}
                 title="Currently Reading"
                 shelfId="currentlyReading"
-                books={this.props.books}
+                books={[{
+                  "title": "Artificial Intelligence",
+                  "authors": ["John Haugeland"],
+                  "imageLinks": "http://books.google.com/books/content?id=zLFSPdIuqKsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}]}
+
               />
               <BookShelf
+                onGetBook={this.getBook}
                 title="Read"
                 shelfId="read"
-                books={this.props.books}
+                books={this.state.books}
+
               />
               <BookShelf
+                onGetBook={this.getBook}
                 title="Want to Read"
                 shelfId="wantToRead"
-                books={this.props.books}
+                books={this.state.books}
               />
               <div className="open-search">
                 <Link to="/search">Add a book</Link>
