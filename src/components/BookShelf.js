@@ -19,7 +19,7 @@ class BookShelf extends Component {
 
   addBook = (targetBook) => {
     console.log(`Adding Book... ${JSON.stringify(targetBook)}`);
-    console.log(`req body: ${targetBook.id}, ${targetBook.shelf}`)
+    console.log(`req body: ${targetBook.id}, ${targetBook.shelfId}`)
     BooksAPI.update(targetBook, targetBook.shelfId)
       .then(res => {
         console.log(res)
@@ -31,7 +31,7 @@ class BookShelf extends Component {
     BooksAPI.getAll().then(books => {
       console.log(books)
     });
-    this.forceUpdate();
+  //  this.forceUpdate();
   }
 
   render() {

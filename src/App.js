@@ -8,13 +8,20 @@ import * as BooksAPI from './BooksAPI'
 
 
 class BooksApp extends React.Component {
-
-    state = {
-      books: []
-    }
-
+  state = {
+    books: []
+  }
 
   componentDidMount() {
+    BooksAPI.getAll()
+      .then(books => (
+        this.setState({
+          books
+        })
+      ));
+  }
+
+  componentWillUpdate() {
     BooksAPI.getAll()
       .then(books => (
         this.setState({
