@@ -13,6 +13,7 @@ class BookShelf extends Component {
     console.log(`bs props: ${JSON.stringify(this.props)}`)
     console.log(`bs state: ${JSON.stringify(this.state)}`)
     this.addBook = this.addBook.bind(this);
+
   }
 
 
@@ -29,6 +30,11 @@ class BookShelf extends Component {
 
   addBook = (targetBook) => {
     console.log(`Adding Book... ${JSON.stringify(targetBook)}`);
+    console.log(`req body: ${targetBook.id}, ${targetBook.shelf}`)
+    BooksAPI.update(targetBook.id, targetBook.shelfId)
+      .then(res => {
+        console.log(res)
+      });
   //  this.props.myfunc();
     // console.log(`Matching.... ${this.state.shelfId} TO ${targetBook.shelfId}`);
     // if (this.state.shelfId === targetBook.shelfId) {
@@ -41,7 +47,7 @@ class BookShelf extends Component {
       books: this.state.books.concat([targetBook])
     })
     BooksAPI.getAll().then(books => {
-      console.log(books[0])
+      console.log(books)
     });
 
     console.log(`After Adding state: ${JSON.stringify(this.state.books)}`)
@@ -75,7 +81,10 @@ class BookShelf extends Component {
                   onRemoveBook={this.removeBook}
                   title={book.title}
                   authors={book.authors}
-                  imgUrl={book.imageLinks}/>
+                  imgUrl={book.imageLinks.thumbnail}
+                  id={book.id}
+                  shelf={book.shelf}
+                />
               </li>
             ))}
           </ol>

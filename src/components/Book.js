@@ -20,7 +20,9 @@ class Book extends Component {
       title: this.props.title,
       authors: this.props.authors,
       imgUrl: this.props.imgUrl,
-      shelfId: e.target.value
+      shelfId: e.target.value,
+      id: this.props.id,
+      shelf: this.props.shelf
     }
     this.props.onAddBook(targetBook);
     this.props.onRemoveBook(targetBook);
@@ -30,7 +32,7 @@ class Book extends Component {
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imgUrl.thumbnail})` }}></div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imgUrl})` }}></div>
           <div className="book-shelf-changer">
               <select value={this.state.value} onChange={this.handleChange}>
                 <option value="none" disabled>Move to...</option>

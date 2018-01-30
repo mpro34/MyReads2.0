@@ -30,13 +30,6 @@ class BookSearch extends Component {
         books
       })
     ));
-
-
-    const getRes = BooksAPI.getAll();
-    getRes.then(books => (
-      console.log(books)
-    ))
-    console.log(`Book Vals from API: ${getRes}`);
     //2. Clear the search field after api call is issued?
   }
 

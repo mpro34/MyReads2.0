@@ -6,6 +6,7 @@ import './App.css'
 import BookShelf from './components/BookShelf';
 //import BookList from './components/BookList';
 import BookSearch from './components/BookSearch';
+import * as BooksAPI from './BooksAPI'
 
 
 class BooksApp extends React.Component {
@@ -16,6 +17,17 @@ class BooksApp extends React.Component {
     }
     this.getBook = this.getBook.bind(this);
   }
+
+  componentDidMount() {
+    BooksAPI.getAll()
+      .then(books => (
+        this.setState({
+          books
+        })
+      ))
+  }
+
+
 
   getBook = (selectedBooks) => {
     console.log(`Adding App.js... ${selectedBooks}`);
@@ -38,18 +50,13 @@ class BooksApp extends React.Component {
                 onGetBook={this.getBook}
                 title="Currently Reading"
                 shelfId="currentlyReading"
-                books={[{
-                  "title": "Artificial Intelligence",
-                  "authors": ["John Haugeland"],
-                  "imageLinks": "http://books.google.com/books/content?id=zLFSPdIuqKsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}]}
-
+                books={this.state.books}
               />
               <BookShelf
                 onGetBook={this.getBook}
                 title="Read"
                 shelfId="read"
                 books={this.state.books}
-
               />
               <BookShelf
                 onGetBook={this.getBook}
