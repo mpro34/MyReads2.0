@@ -25,7 +25,6 @@ class Book extends Component {
       shelf: this.props.shelf
     }
     this.props.onAddBook(targetBook);
-    this.props.onRemoveBook(targetBook);
   }
 
   render() {
@@ -36,10 +35,10 @@ class Book extends Component {
           <div className="book-shelf-changer">
               <select value={this.state.value} onChange={this.handleChange}>
                 <option value="none" disabled>Move to...</option>
+                <option defaultValue="none">None</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
-                <option defaultValue="none">None</option>
               </select>
           </div>
         </div>

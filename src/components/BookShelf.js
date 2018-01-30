@@ -20,7 +20,7 @@ class BookShelf extends Component {
   addBook = (targetBook) => {
     console.log(`Adding Book... ${JSON.stringify(targetBook)}`);
     console.log(`req body: ${targetBook.id}, ${targetBook.shelf}`)
-    BooksAPI.update(targetBook.id, targetBook.shelfId)
+    BooksAPI.update(targetBook, targetBook.shelfId)
       .then(res => {
         console.log(res)
       });
@@ -31,12 +31,7 @@ class BookShelf extends Component {
     BooksAPI.getAll().then(books => {
       console.log(books)
     });
-
-    console.log(`After Adding state: ${JSON.stringify(this.state.books)}`)
-  }
-
-  removeBook = (targetBook) => {
-    console.log(`Removing Book... ${JSON.stringify(targetBook)}`);
+    this.forceUpdate();
   }
 
   render() {
@@ -55,7 +50,6 @@ class BookShelf extends Component {
               <li key={index}>
                 <Book
                   onAddBook={this.addBook}
-                  onRemoveBook={this.removeBook}
                   title={book.title}
                   authors={book.authors}
                   imgUrl={book.imageLinks.thumbnail}
