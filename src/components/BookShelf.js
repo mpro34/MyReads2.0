@@ -74,7 +74,9 @@ class BookShelf extends Component {
         }
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.props.books.map((book, index) => (
+            {this.props.books.filter((book) => (
+              book.shelf === this.state.shelfId
+            )).map((book, index) => (
               <li key={index}>
                 <Book
                   onAddBook={this.addBook}
