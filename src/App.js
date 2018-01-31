@@ -12,22 +12,24 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  componentDidMount() {
+  updateBookState() {
     BooksAPI.getAll()
       .then(books => (
         this.setState({
           books
         })
-      ));
+      ))
+      .catch((err) => {
+        console.log(`Error in getAll API call: ${err}`);
+      });
+  }
+
+  componentDidMount() {
+    this.updateBookState();
   }
 
   componentWillUpdate() {
-    BooksAPI.getAll()
-      .then(books => (
-        this.setState({
-          books
-        })
-      ));
+    this.updateBookState();
   }
 
   render() {

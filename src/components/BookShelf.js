@@ -6,32 +6,21 @@ import * as BooksAPI from '../BooksAPI'
 class BookShelf extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       books: [],
       shelfId: this.props.shelfId
     }
-    console.log(`bs props: ${JSON.stringify(this.props)}`)
-    console.log(`bs state: ${JSON.stringify(this.state)}`)
-    this.addBook = this.addBook.bind(this);
-
+    this.updateBook = this.updateBook.bind(this);
   }
 
-  addBook = (targetBook) => {
-    console.log(`Adding Book... ${JSON.stringify(targetBook)}`);
-    console.log(`req body: ${targetBook.id}, ${targetBook.shelfId}`)
+  updateBook = (targetBook) => {
     BooksAPI.update(targetBook, targetBook.shelfId)
-      .then(res => {
-        console.log(res)
+      .catch((err) => {
+        console.log(`Error in API update: ${err}`);
       });
-    console.log(`Original state: ${JSON.stringify(this.state.books)}`)
     this.setState({
       books: this.state.books.concat([targetBook])
-    })
-    BooksAPI.getAll().then(books => {
-      console.log(books)
     });
-  //  this.forceUpdate();
   }
 
   render() {
@@ -49,7 +38,7 @@ class BookShelf extends Component {
             )).map((book, index) => (
               <li key={index}>
                 <Book
-                  onAddBook={this.addBook}
+                  onUpdateBook={this.updateBook}
                   title={book.title}
                   authors={book.authors}
                   imgUrl={book.imageLinks.thumbnail}

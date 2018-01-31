@@ -3,16 +3,13 @@ import React, { Component } from 'react';
 class Book extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       value: ''
     }
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    console.log(`Handling book change: ${e.target.value}`);
     this.setState = ({
       value: e.target.value
     })
@@ -24,7 +21,7 @@ class Book extends Component {
       id: this.props.id,
       shelf: this.props.shelf
     }
-    this.props.onAddBook(targetBook);
+    this.props.onUpdateBook(targetBook);
   }
 
   render() {

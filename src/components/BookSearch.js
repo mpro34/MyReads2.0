@@ -23,14 +23,15 @@ class BookSearch extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    //1. Issue API search here
-    const searchRes = BooksAPI.search(this.state.term);
-    searchRes.then(books => (
-      this.setState({
-        books
-      })
-    ));
-    //2. Clear the search field after api call is issued?
+    BooksAPI.search(this.state.term)
+      .then(books => (
+        this.setState({
+          books
+        })
+      ))
+      .catch((err) => {
+        console.log(`Error occurred in API search: ${err}`);
+      });
   }
 
   render() {
