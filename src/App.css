@@ -164,17 +164,17 @@ body, .app {
 
 /* book rating */
 
-.rating {
+/* .rating {
     float:left;
     position: absolute;
     left: 0;
     top: -25px;
-}
+} */
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */
-.rating:not(:checked) > input {
+/* .rating:not(:checked) > input {
     position:absolute;
     top:-9999px;
     clip:rect(0,0,0,0);
@@ -221,7 +221,7 @@ body, .app {
     position:relative;
     top:2px;
     left:2px;
-}
+} */
 
 /* book cover */
 
