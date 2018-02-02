@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 class Book extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: ''
-    }
+    // this.state = {
+    //   value: ''
+    // }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState = ({
+    this.setState({
       value: e.target.value
     })
     const targetBook = {
@@ -25,12 +25,15 @@ class Book extends Component {
   }
 
   render() {
+    const bkImg = this.props.imgUrl;
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imgUrl})` }}></div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${
+            bkImg === undefined ? ('http://via.placeholder.com/128x193?text=No%20Cover') : (bkImg)
+          })` }}></div>
           <div className="book-shelf-changer">
-              <select value={this.state.value} onChange={this.handleChange}>
+              <select value={this.props.shelf} onChange={this.handleChange}>
                 <option value="none" disabled>Move to...</option>
                 <option defaultValue="none">None</option>
                 <option value="currentlyReading">Currently Reading</option>
@@ -40,7 +43,7 @@ class Book extends Component {
           </div>
         </div>
         <div className="book-title">{this.props.title}</div>
-        <div className="book-authors">{this.props.authors}</div>
+        <div className="book-authors">{this.props.authors ? this.props.authors.join(', ') : ''}</div>
       </div>
     );
   }

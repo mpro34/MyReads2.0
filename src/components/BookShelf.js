@@ -18,8 +18,8 @@ class BookShelf extends Component {
       .catch((err) => {
         console.log(`Error in API update: ${err}`);
       });
-    this.setState({
-      books: this.state.books.concat([targetBook])
+    this.setState(prevBooks => {
+      return { books: [...prevBooks, targetBook] }
     });
   }
 
@@ -41,7 +41,7 @@ class BookShelf extends Component {
                   onUpdateBook={this.updateBook}
                   title={book.title}
                   authors={book.authors}
-                  imgUrl={book.imageLinks.thumbnail}
+                  imgUrl={book.imageLinks === undefined ? 'http://via.placeholder.com/128x193?text=No%20Cover' : book.imageLinks.thumbnail}
                   id={book.id}
                   shelf={book.shelf}
                 />
