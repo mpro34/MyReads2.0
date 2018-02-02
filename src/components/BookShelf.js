@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Book from './Book';
 import * as BooksAPI from '../BooksAPI'
+import shortid from 'shortid';
 
 class BookShelf extends Component {
   constructor(props) {
@@ -35,8 +36,8 @@ class BookShelf extends Component {
           <ol className="books-grid">
             {this.props.books.filter((book) => (
               book.shelf === this.state.shelfId
-            )).map((book, index) => (
-              <li key={index}>
+            )).map((book) => (
+              <li key={shortid.generate()}>
                 <Book
                   onUpdateBook={this.updateBook}
                   title={book.title}
