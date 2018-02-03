@@ -4,7 +4,7 @@ MyReads is a React Application for book tracking and searching. It utilizes a th
 
 ## Installation
 ```bash
-git clone dsadsdadsa
+git clone https://github.com/mpro34/MyReads2.0.git
 cd MyReads2.0
 npm install
 ```
