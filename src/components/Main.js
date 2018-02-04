@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 
 import BookShelf from './BookShelf';
-import * as BooksAPI from '../BooksAPI'
+import * as BooksAPI from '../BooksAPI';
+import shortid from 'shortid';
 
 
 class Main extends Component {
@@ -30,27 +31,40 @@ class Main extends Component {
   componentWillReceiveProps() {
     this.updateBookState();
   }
+
   render() {
+    const shelves = [
+      {
+        id: 'currentlyReading',
+        title: 'Currently Reading',
+        books: this.state.books.filter(book => book.shelf === "currentlyReading")
+      },
+      {
+        id: 'read',
+        title: 'Read',
+        books: this.state.books.filter(book => book.shelf === "read")
+      },
+      {
+        id: 'wantToRead',
+        title: 'Want to Read',
+        books: this.state.books.filter(book => book.shelf === "wantToRead")
+      }
+    ]
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <BookShelf
-          title="Currently Reading"
-          shelfId="currentlyReading"
-          books={this.state.books.filter(book => book.shelf === "currentlyReading")}
-        />
-        <BookShelf
-          title="Read"
-          shelfId="read"
-          books={this.state.books.filter(book => book.shelf === "read")}
-        />
-        <BookShelf
-          title="Want to Read"
-          shelfId="wantToRead"
-          books={this.state.books.filter(book => book.shelf === "wantToRead")}
-        />
+        {
+          shelves.map(shelf => (
+            <BookShelf
+              key={shortid.generate()}
+              shelfId={shelf.id}
+              title={shelf.title}
+              books={shelf.books}
+            />
+          ))
+        }
         <div className="open-search">
           <Link to="/search">Add a book</Link>
         </div>
