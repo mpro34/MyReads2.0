@@ -12,7 +12,7 @@ class BookSearch extends Component {
       books: []
     }
     this.onInputChange = this.onInputChange.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onFormInput = this.onFormInput.bind(this);
   }
 
   onInputChange(e) {
@@ -21,7 +21,7 @@ class BookSearch extends Component {
     });
   }
 
-  onFormSubmit(e) {
+  onFormInput(e) {
     e.preventDefault();
     BooksAPI.search(this.state.term)
       .then(books => (
@@ -39,7 +39,7 @@ class BookSearch extends Component {
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/'>Close</Link>
-          <form onSubmit={this.onFormSubmit} className="search-books-input-wrapper">
+          <form onSubmit={this.onFormInput} onChange={this.onFormInput} className="search-books-input-wrapper">
             <input
               type="text"
               placeholder="Search by title or author"
