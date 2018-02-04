@@ -22,6 +22,8 @@ class BookShelf extends Component {
     this.setState(prevBooks => {
       return { books: [...prevBooks, targetBook] }
     });
+
+    this.props.onUpdateBookState();
   }
 
   render() {
@@ -40,6 +42,7 @@ class BookShelf extends Component {
               <li key={shortid.generate()}>
                 <Book
                   onUpdateBook={this.updateBook}
+                  onRenderBook={this.props.onRenderBooks}
                   title={book.title}
                   authors={book.authors}
                   imgUrl={book.imageLinks === undefined ? 'http://via.placeholder.com/128x193?text=No%20Cover' : book.imageLinks.thumbnail}

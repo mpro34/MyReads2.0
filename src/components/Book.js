@@ -25,6 +25,8 @@ class Book extends Component {
   }
 
   render() {
+  //const isInShelf = this.props.onRenderBook(this.props.id);
+  //  console.log(`Is in Shelf value = ${isInShelf}`);
     const bkImg = this.props.imgUrl;
     return (
       <div className="book">

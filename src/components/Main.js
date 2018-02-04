@@ -8,8 +8,13 @@ import shortid from 'shortid';
 
 
 class Main extends Component {
-  state = {
-    books: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: []
+    }
+    this.updateBookState = this.updateBookState.bind(this);
+    this.getBookShelf = this.getBookShelf.bind(this);
   }
 
   updateBookState() {
@@ -24,6 +29,11 @@ class Main extends Component {
       });
   }
 
+  getBookShelf(bookId) {
+    console.log(`Book Id = ${bookId}`);
+    return this.state.books;
+  }
+
   componentDidMount() {
     this.updateBookState();
   }
@@ -35,21 +45,22 @@ class Main extends Component {
   render() {
     const shelves = [
       {
-        id: 'currentlyReading',
+        shelfId: 'currentlyReading',
         title: 'Currently Reading',
         books: this.state.books.filter(book => book.shelf === "currentlyReading")
       },
       {
-        id: 'read',
+        shelfId: 'read',
         title: 'Read',
         books: this.state.books.filter(book => book.shelf === "read")
       },
       {
-        id: 'wantToRead',
+        shelfId: 'wantToRead',
         title: 'Want to Read',
         books: this.state.books.filter(book => book.shelf === "wantToRead")
       }
     ]
+
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -59,9 +70,11 @@ class Main extends Component {
           shelves.map(shelf => (
             <BookShelf
               key={shortid.generate()}
-              shelfId={shelf.id}
+              shelfId={shelf.shelfId}
               title={shelf.title}
               books={shelf.books}
+              onUpdateBookState={this.updateBookState}
+              onRenderBooks={this.getBookShelf}
             />
           ))
         }
