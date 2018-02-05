@@ -27,11 +27,15 @@ class BookShelf extends Component {
   }
 
   render() {
-    this.props.onRenderBooks().map(mybook => {
-      return this.props.books.map(searchbook => {
-        return (mybook.id === searchbook.id) ? searchbook.shelf = mybook.shelf : undefined
-      })
-    });
+    const myBooks = this.props.onRenderBooks();
+    if (myBooks) {
+      myBooks.map(mybook => {
+        return this.props.books.map(searchbook => {
+          return (mybook.id === searchbook.id) ? searchbook.shelf = mybook.shelf : undefined
+        })
+      });
+    }
+
 
     return (
       <div className="bookshelf">
@@ -42,9 +46,7 @@ class BookShelf extends Component {
         }
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.props.books.filter((book) => (
-              book.shelf === this.state.shelfId
-            )).map((book) => (
+            {this.props.books.map((book) => (
               <li key={shortid.generate()}>
                 <Book
                   onUpdateBook={this.updateBook}
