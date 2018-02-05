@@ -29,4 +29,4 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MyReads is licensed under the MIT License. Please see LICENSE.txt for further details.
+MyReads is licensed under the MIT License. Please see [LICENSE.txt](LICENSE.txt) for further details.
