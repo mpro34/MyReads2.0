@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 class Book extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   value: ''
-    // }
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -25,8 +22,6 @@ class Book extends Component {
   }
 
   render() {
-  //const isInShelf = this.props.onRenderBook(this.props.id);
-  //  console.log(`Is in Shelf value = ${isInShelf}`);
     const bkImg = this.props.imgUrl;
     return (
       <div className="book">

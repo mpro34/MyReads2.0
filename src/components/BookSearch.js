@@ -51,6 +51,8 @@ class BookSearch extends Component {
         <div className="search-books-results">
           <BookShelf
             books={this.state.books}
+            onRenderBooks={this.props.getBookShelf}
+            onUpdateBookState={this.props.updateBookState}
           />
         </div>
       </div>

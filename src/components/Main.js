@@ -3,61 +3,26 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 
 import BookShelf from './BookShelf';
-import * as BooksAPI from '../BooksAPI';
 import shortid from 'shortid';
 
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: []
-    }
-    this.updateBookState = this.updateBookState.bind(this);
-    this.getBookShelf = this.getBookShelf.bind(this);
-  }
-
-  updateBookState() {
-    BooksAPI.getAll()
-      .then(books => (
-        this.setState({
-          books
-        })
-      ))
-      .catch((err) => {
-        console.log(`Error in getAll API call: ${err}`);
-      });
-  }
-
-  getBookShelf(bookId) {
-    console.log(`Book Id = ${bookId}`);
-    return this.state.books;
-  }
-
-  componentDidMount() {
-    this.updateBookState();
-  }
-
-  componentWillReceiveProps() {
-    this.updateBookState();
-  }
-
   render() {
     const shelves = [
       {
         shelfId: 'currentlyReading',
         title: 'Currently Reading',
-        books: this.state.books.filter(book => book.shelf === "currentlyReading")
+        books: this.props.books.filter(book => book.shelf === "currentlyReading")
       },
       {
         shelfId: 'read',
         title: 'Read',
-        books: this.state.books.filter(book => book.shelf === "read")
+        books: this.props.books.filter(book => book.shelf === "read")
       },
       {
         shelfId: 'wantToRead',
         title: 'Want to Read',
-        books: this.state.books.filter(book => book.shelf === "wantToRead")
+        books: this.props.books.filter(book => book.shelf === "wantToRead")
       }
     ]
 
@@ -73,8 +38,8 @@ class Main extends Component {
               shelfId={shelf.shelfId}
               title={shelf.title}
               books={shelf.books}
-              onUpdateBookState={this.updateBookState}
-              onRenderBooks={this.getBookShelf}
+              onUpdateBookState={this.props.updateBookState}
+              onRenderBooks={this.props.getBookShelf}
             />
           ))
         }

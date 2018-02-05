@@ -27,6 +27,12 @@ class BookShelf extends Component {
   }
 
   render() {
+    this.props.onRenderBooks().map(mybook => {
+      return this.props.books.map(searchbook => {
+        return (mybook.id === searchbook.id) ? searchbook.shelf = mybook.shelf : undefined
+      })
+    });
+
     return (
       <div className="bookshelf">
         {
