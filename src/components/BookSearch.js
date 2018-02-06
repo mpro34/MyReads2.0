@@ -15,6 +15,10 @@ class BookSearch extends Component {
     this.onFormInput = this.onFormInput.bind(this);
   }
 
+// TODO: Merge onInputChange and onFormInput.
+// TODO: Change setState call with term setState so it's not stale entry.
+// TODO: Change setState call with books setState so it's not stale entry.
+//  https://stackoverflow.com/questions/48563650/does-react-keep-the-order-for-state-updates/48610973#48610973
   onInputChange(e) {
     this.setState({
       term: e.target.value
@@ -39,6 +43,7 @@ class BookSearch extends Component {
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/'>Close</Link>
+          {/* TODO: Only use onChange with the merged function above.*/}
           <form onSubmit={this.onFormInput} onChange={this.onFormInput} className="search-books-input-wrapper">
             <input
               type="text"

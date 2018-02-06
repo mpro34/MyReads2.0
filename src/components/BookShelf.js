@@ -14,6 +14,7 @@ class BookShelf extends Component {
     this.updateBook = this.updateBook.bind(this);
   }
 
+//TODO: Update where this.props.onUpdateBookState() is called:
   updateBook = (targetBook) => {
     BooksAPI.update(targetBook, targetBook.shelfId)
       .catch((err) => {
@@ -22,7 +23,7 @@ class BookShelf extends Component {
     this.setState(prevBooks => {
       return { books: [...prevBooks, targetBook] }
     });
-
+//TODO: "You wait until update has complete before calling this"
     this.props.onUpdateBookState();
   }
 
