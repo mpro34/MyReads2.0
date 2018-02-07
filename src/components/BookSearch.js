@@ -11,22 +11,11 @@ class BookSearch extends Component {
       term: '',
       books: []
     }
-    this.onInputChange = this.onInputChange.bind(this);
     this.onFormInput = this.onFormInput.bind(this);
+    this.searchForBook = this.searchForBook.bind(this);
   }
 
-// TODO: Merge onInputChange and onFormInput.
-// TODO: Change setState call with term setState so it's not stale entry.
-// TODO: Change setState call with books setState so it's not stale entry.
-//  https://stackoverflow.com/questions/48563650/does-react-keep-the-order-for-state-updates/48610973#48610973
-  onInputChange(e) {
-    this.setState({
-      term: e.target.value
-    });
-  }
-
-  onFormInput(e) {
-    e.preventDefault();
+  searchForBook() {
     BooksAPI.search(this.state.term)
       .then(books => (
         this.setState({
@@ -38,13 +27,18 @@ class BookSearch extends Component {
       });
   }
 
+  onFormInput(e) {
+    console.log(`on form input: ${JSON.stringify(this.state)}`);
+    e.preventDefault();
+    this.setState({ term: e.target.value }, this.searchForBook)
+  }
+
   render() {
     return (
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/'>Close</Link>
-          {/* TODO: Only use onChange with the merged function above.*/}
-          <form onSubmit={this.onFormInput} onChange={this.onFormInput} className="search-books-input-wrapper">
+          <form onChange={this.onFormInput} className="search-books-input-wrapper">
             <input
               type="text"
               placeholder="Search by title or author"

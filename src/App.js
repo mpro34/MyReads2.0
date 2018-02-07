@@ -38,11 +38,6 @@ class BooksApp extends Component {
     this.updateBookState();
   }
 
-// TODO: This is not needed, ensure everything works after removal
-  componentWillReceiveProps() {
-    this.updateBookState();
-  }
-
   render() {
     return (
         <div className="app">
